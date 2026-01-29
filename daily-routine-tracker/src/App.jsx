@@ -10,11 +10,14 @@ import ProgressCharts from './components/ProgressCharts';
 import { useLocalStorage } from './hooks/useLocalStorage';
 import { Trash2, Archive } from 'lucide-react';
 import ThemeToggle from './components/ThemeToggle';
+import FeedbackModal from './components/FeedbackModal';
+import { MessageSquarePlus } from 'lucide-react';
 
 function App() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [allTasks, setAllTasks] = useLocalStorage('daily-tracker-tasks', {});
   const [activeDragItem, setActiveDragItem] = useState(null);
+  const [isFeedbackOpen, setIsFeedbackOpen] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -105,10 +108,21 @@ function App() {
             <h1 className="text-xl font-bold tracking-tight">DailyFlow</h1>
           </div>
           <div className="flex items-center gap-2">
+            <button
+              onClick={() => setIsFeedbackOpen(true)}
+              className="p-2 text-[var(--text-muted)] hover:text-[var(--accent-primary)] hover:bg-[var(--bg-input)] rounded-lg transition-colors flex items-center gap-2"
+              title="Request Feature"
+            >
+              <MessageSquarePlus size={18} />
+              <span className="text-sm font-medium hidden md:inline">Feedback</span>
+            </button>
+            <div className="w-px h-6 bg-[var(--border-color)] mx-1"></div>
             <span className="text-sm text-[var(--text-muted)] hidden md:inline">{format(new Date(), 'EEEE, MMMM do')}</span>
             <ThemeToggle />
           </div>
         </div>
+
+        <FeedbackModal isOpen={isFeedbackOpen} onClose={() => setIsFeedbackOpen(false)} />
 
         {/* Compact Grid Layout: Max height fixed to viewport subset */}
         <div className="grid grid-cols-12 gap-4 h-[calc(100vh-80px)]">
