@@ -16,9 +16,9 @@ This project is configured for easy deployment to GitHub Pages.
 1.  **Configure Base URL**:
     Open `vite.config.js` and ensure the `base` option matches your repository name:
     ```js
-    base: '/your-repo-name/',
+    base: '/Daily_tracker/',
     ```
-    *(Currently set to `/daily-routine-tracker/`)*
+    *(Currently set to `/Daily_tracker/`)*
 
 2.  **Deploy Command**:
     Run the following command in your terminal:
@@ -36,7 +36,7 @@ This project is configured for easy deployment to GitHub Pages.
     - Select the `gh-pages` branch and `/ (root)` folder.
     - Click **Save**.
 
-Your app will be live at `https://<your-username>.github.io/<repo-name>/`.
+Your app will be live at `https://<your-username>.github.io/Daily_tracker/`.
 
 ## Development
 
