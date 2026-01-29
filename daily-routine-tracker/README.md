@@ -1,16 +1,47 @@
-# React + Vite
+# Daily Routine Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A premium, responsive Daily Routine Tracker web application optimized for desktop productivity.
 
-Currently, two official plugins are available:
+## Features
+- **Compact Dashboard**: Single-screen view with no page scrolling.
+- **Drag & Drop Schedule**: Plan your day by dragging tasks into time slots.
+- **Visual Analytics**: Real-time charts for weekly progress, daily splits, and activity trends.
+- **Theme Support**: Premium Dark Mode and Light Mode with persistence.
+- **Local Data**: All data remains on your device (LocalStorage).
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Deployment to GitHub Pages
 
-## React Compiler
+This project is configured for easy deployment to GitHub Pages.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1.  **Configure Base URL**:
+    Open `vite.config.js` and ensure the `base` option matches your repository name:
+    ```js
+    base: '/your-repo-name/',
+    ```
+    *(Currently set to `/daily-routine-tracker/`)*
 
-## Expanding the ESLint configuration
+2.  **Deploy Command**:
+    Run the following command in your terminal:
+    ```bash
+    npm run deploy
+    ```
+    This script will:
+    - Build the project (`npm run build`).
+    - Push the `dist` folder to a `gh-pages` branch on your repository.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3.  **GitHub Settings**:
+    - Go to your repository on GitHub.
+    - Navigate to **Settings** > **Pages**.
+    - Under **Build and deployment**, select **Source** as `Deploy from a branch`.
+    - Select the `gh-pages` branch and `/ (root)` folder.
+    - Click **Save**.
+
+Your app will be live at `https://<your-username>.github.io/<repo-name>/`.
+
+## Development
+
+To run locally:
+```bash
+npm install
+npm run dev
+```

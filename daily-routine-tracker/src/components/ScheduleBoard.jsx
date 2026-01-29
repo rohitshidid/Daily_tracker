@@ -55,7 +55,13 @@ const TimeSlot = ({ id, time, tasks, isOver, isCurrentHour }) => {
 };
 
 const ScheduleBoard = ({ schedule, tasks, activeId }) => {
-    // Generate hours 6 AM to 11 PM
+    // Force re-render every minute to update time line and current hour
+    const [_, setTick] = React.useState(0);
+    React.useEffect(() => {
+        const timer = setInterval(() => setTick(t => t + 1), 60000);
+        return () => clearInterval(timer);
+    }, []);
+
     const hours = [];
     for (let i = 6; i <= 23; i++) {
         const hour = i > 12 ? `${i - 12} PM` : i === 12 ? '12 PM' : `${i} AM`;
@@ -65,7 +71,7 @@ const ScheduleBoard = ({ schedule, tasks, activeId }) => {
     const currentHour = new Date().getHours();
 
     return (
-        <div className="flex flex-col h-full max-h-[600px] overflow-y-auto scrollbar-thin rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] relative">
+        <div className="flex flex-col h-full overflow-y-auto scrollbar-thin rounded-xl bg-[var(--bg-secondary)] border border-[var(--border-color)] relative">
             {hours.map((h) => {
                 // Find tasks scheduled for this slot
                 const slotTasks = tasks.filter(t => t.scheduledSlot === h.id);
